@@ -76,22 +76,128 @@ body {
 header {
     background: var(--black);
     color: var(--blue);
-    padding: 1rem;
+    padding: 2.5rem 1rem 1rem 1rem;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--blue);
 }
 
 header h1 {
+    font-size: 2em;
     position: relative;
     padding-left: 4rem;
+    font-weight: bold;
+
 }
 
+/* ADD FLOATING SVG LOGO BEFORE THE H1 */
+header h1:before {
+    content: "";
+    position: absolute;
+    left:-.5rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    background: url('images/vanguard-logo.svg') no-repeat center/contain;
+
+}
+
+/* NAVIGATION STYLES */
 nav h2 {
     visibility: hidden;
     height: 1px;
 }
 
+nav {
+    background-color: var(--black);
+}
 
+nav ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
+    max-height: 0;
+}
+
+nav li a {
+  display:block;
+  font-family: var(--font);
+  font-size:1.5rem;
+  padding:1rem;
+  text-transform:uppercase;
+  font-weight:bold;
+  text-decoration:none;
+  color: var(--blue);
+  transition: background-color .5s ease-in;
+}
+
+nav a:hover, nav input:hover {
+    background-color: var(--blue);
+    color: var(--black);
+}
+
+nav label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1.5rem;
+    user-select: none;
+}
+
+label span {
+    background-color: var(--white);
+    display: block;
+    left: 5rem;
+    height: .25rem;
+    position: relative;
+    transition: background-color .5s ease-out;
+    width: 1.75rem;
+}
+
+label span:before, label span:after {
+    background: var(--white);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .4s ease-out;
+    width: 100%;
+}
+
+label span:before {
+    top: .75rem;
+}
+
+label span:after {
+    top: -.75rem;
+}
+
+input {
+  display:none;
+  width: 5rem;
+  height: 5rem;
+}
+
+input:checked ~ ul {
+    max-height: 500px;
+}
+
+/* input:checked ~ label span {
+    background: transparent;
+}
+
+input:checked ~ label span:before {
+    transform: rotate(-45deg);
+}
+
+input:checked ~ label span:after {
+    transform: rotate(45deg);
+} */
+
+/* input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
+    top: 0;
+} */
 
 /* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
 .container {
@@ -105,22 +211,120 @@ nav h2 {
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
     height: 80vh;
     display: grid;
-    place-items: center;
+    align-content: center;
+    justify-items: center;
     text-align: center;
+    gap: 1rem;
     padding: 1rem;
     overflow: hidden;
+    color: var(--white);
 }
 
-/* ADD FLOATING SVG LOGO BEFORE THE H1 */
-header h1::before {
-    content: "";
-    position: absolute;
-    left:-.5rem;
-    width: 3.75rem;
-    height: 3.75rem;
-    background: url('images/vanguard-logo.svg') no-repeat center/contain;
-
+#about h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
+
+
+#about a {
+    color: var(--white);
+    background-color: var(--blue);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 1rem;
+    width: 50%;
+    border-radius: 10px;
+}
+
+#services {
+    display: grid;
+    margin: 0 1rem;
+    margin-bottom: 2.5rem;
+}
+
+#services h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#services h2 {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+#services h2:last-child {
+    text-align: left;
+}
+
+#services section h3 {
+    font-weight: 1.2rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+#offers section {
+    background-color: var(--blue);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 0.5rem;
+    padding: 1.5rem 0.75rem;
+    border-radius: 10px;
+    
+}
+
+#table-bar-chart {
+    background-color: var(--blue);
+    padding: 1.5rem;
+    color: var(--white);
+}
+
+#table-bar-chart h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+    font-weight: bold;
+}
+
+#table-bar-chart h3 {
+   font-size: 1.25rem; 
+   font-weight: bold;
+   margin: 0.5rem 0;
+}
+
+table {
+   margin: 0 auto;
+   border-collapse: collapse;
+}
+
+th, td {
+   text-align: center;
+   padding: 1rem;
+   border-left: 1px solid var(--charcoal);
+   border-right: 1px solid var(--charcoal);
+}
+
+thead tr {
+   background-color: var(--black);
+   border-bottom: 1px solid var(--charcoal);
+}
+
+tbody tr:nth-child(1),
+tbody tr:nth-child(3),
+tbody tr:nth-child(5) {
+   background-color: var(--black);
+}
+
+tbody tr:nth-child(2),
+tbody tr:nth-child(4) {
+   background-color: var(--charcoal);
+
+
+   
+}
+
+
 /* THIS ONE IS DONE FOR YOU */
 #bar-chart {
     display: grid;
@@ -169,6 +373,24 @@ header h1::before {
 
 
 /* MEDIA QUERIES (MEDIUM) */ 
+@media screen and (min-width: 800px) {
+
+    nav ul {
+        overflow:visible;
+        position:absolute;
+        top: 1.5rem;
+        left:.5rem;
+        display: grid;
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    nav li a {
+        display:inline-block;
+    }
+
+    label span, input {
+        display:none;
+    }
 
     #results {
         grid-template-columns: 1fr 1fr;
@@ -184,5 +406,5 @@ header h1::before {
         width: 50%;
     }
 
-
+}
 /* MEDIA QUERIES (LARGE) */
