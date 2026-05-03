@@ -122,15 +122,15 @@ nav ul {
 }
 
 nav li a {
-  display:block;
-  font-family: var(--font);
-  font-size:1.5rem;
-  padding:1rem;
-  text-transform:uppercase;
-  font-weight:bold;
-  text-decoration:none;
-  color: var(--blue);
-  transition: background-color .5s ease-in;
+    display:block;
+    font-family: var(--font);
+    font-size:1.5rem;
+    padding:1rem;
+    text-transform:uppercase;
+    font-weight:bold;
+    text-decoration:none;
+    color: var(--blue);
+    transition: background-color .5s ease-in;
 }
 
 nav a:hover, nav input:hover {
@@ -173,10 +173,10 @@ label span:after {
     top: -.75rem;
 }
 
-input {
-  display:none;
-  width: 5rem;
-  height: 5rem;
+input[type="checkbox"] {
+    display:none;
+    width: 5rem;
+    height: 5rem;
 }
 
 input:checked ~ ul {
@@ -256,6 +256,10 @@ input:checked ~ label span:after {
     text-align: left;
 }
 
+#hide {
+    display: none;
+}
+
 #services section h3 {
     font-weight: 1.2rem;
     font-weight: bold;
@@ -294,8 +298,9 @@ input:checked ~ label span:after {
 }
 
 table {
-   margin: 0 auto;
+   margin: 1.5rem auto;
    border-collapse: collapse;
+   width: 100%;
 }
 
 th, td {
@@ -319,11 +324,108 @@ tbody tr:nth-child(5) {
 tbody tr:nth-child(2),
 tbody tr:nth-child(4) {
    background-color: var(--charcoal);
-
-
-   
 }
 
+#contact {
+    background-color: var(--black);
+    color: var(--white);
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0 0.5rem 0;
+}
+
+#contact {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#contact h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 0.5rem;
+}
+
+form {
+    background-color: var(--black);
+    color: var(--white);
+    align-content: center;
+    width: 100%;
+
+    margin: 0.5rem auto;
+}
+
+form label {
+    display: block;
+    color: var(--white);
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+}
+
+form input,
+form textarea {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--blue);
+    padding: 0.5rem;
+    font-family: var(--font);
+}
+
+form textarea {
+    min-height: 3.5rem;
+}
+form button {
+    background-color: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+    padding: 0.5rem 1rem;
+    font-family: var(--font);
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 0.5rem 0 1rem 0;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+footer small {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+footer h2 {
+    display: none;
+}
+
+footer address {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+footer address a {
+    color: var(--white);
+    text-decoration: none;
+    margin-right: 0.4rem;
+    text-align: center;
+}
+
+footer address a:first-child {
+    text-decoration: underline;
+    color: var(--blue);
+    text-align: center;
+}
 
 /* THIS ONE IS DONE FOR YOU */
 #bar-chart {
@@ -407,4 +509,8 @@ tbody tr:nth-child(4) {
     }
 
 }
+
+
+
+
 /* MEDIA QUERIES (LARGE) */
