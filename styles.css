@@ -76,9 +76,26 @@ header {
     background: var(--black);
     color: var(--blue);
     padding: 2.5rem 1rem 1rem 1rem;
+    position: relative;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.75rem;
+    height: 0.75rem;
+    background: linear-gradient(
+        var(--blue) 0%,
+        rgba(0, 123, 255, 0.6) 40%,
+        transparent 100%);
+}
+
+header .container {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid var(--blue);
+    align-items: center;
 }
 
 header h1 {
@@ -210,13 +227,20 @@ input:checked ~ label span:after {
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
     height: 80vh;
     display: grid;
-    align-content: center;
-    justify-items: center;
+    place-items: center;
     text-align: center;
     gap: 1rem;
-    padding: 1rem;
     overflow: hidden;
     color: var(--white);
+}
+
+#about .container {
+    display: grid;
+    place-items: center;
+    gap: 1.25rem;          /* more breathing room between h2, p, and button */
+    position: relative;
+    backdrop-filter: blur(4px);
+    padding: 0.75rem 0;
 }
 
 #about h2 {
@@ -233,6 +257,13 @@ input:checked ~ label span:after {
     padding: 1rem;
     width: 50%;
     border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#about a:hover,
+#about a:focus {
+    background-color: var(--red);
+    transform: translateY(-1px);
 }
 
 #services {
@@ -244,25 +275,27 @@ input:checked ~ label span:after {
 #services h2 {
     font-size: 1.5rem;
     font-weight: bold;
-}
-
-#services h2 {
-    text-align: center;
     margin: 1.5rem 0;
+    position: relative;
+    left: 1.5rem;
 }
 
-#services h2:last-child {
-    text-align: left;
+#services h2, #services h3 {
+    position: relative;
+    left: 1.25rem;
 }
 
 #hide {
     display: none;
 }
 
-#services section h3 {
+#services h2:last-child {
+    text-align: left;
+}
+
+#services h3 {
     font-weight: 1.2rem;
     font-weight: bold;
-    padding-left: 1.5rem;
     padding-bottom: 0.5rem;
 }
 
@@ -279,26 +312,31 @@ input:checked ~ label span:after {
 
 #table-bar-chart {
     background-color: var(--blue);
-    padding: 1.5rem;
     color: var(--white);
+    padding: 1.5rem 2.25rem;
 }
 
 #table-bar-chart h2 {
     font-size: 1.75rem;
-    margin-bottom: 1.25rem;
-    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    padding-top: 0.75rem;
     font-weight: bold;
 }
 
+
 #table-bar-chart h3 {
-   font-size: 1.25rem; 
+   font-size: 1.55rem; 
    font-weight: bold;
    margin: 0.5rem 0;
 }
 
+#table-bar-chart h2, #table-bar-chart h3 {
+    position: relative;
+    left: 1rem;
+}
+
 table {
    margin: 1.5rem auto;
-   border-collapse: collapse;
    width: 100%;
 }
 
@@ -333,12 +371,6 @@ tbody tr:nth-child(4) {
     margin: 0;
 }
 
-#contact .container {
-    width: 90%;
-    max-width: 32rem;
-    margin: 0 auto;
-}
-
 #contact h2,
 #contact p,
 #contact form {
@@ -349,6 +381,8 @@ tbody tr:nth-child(4) {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    position: relative;
+    left: 1rem;
 }
 
 #contact p {
@@ -376,7 +410,7 @@ tbody tr:nth-child(4) {
     margin-top: 0.25rem;
     margin-bottom: 0.75rem;
     padding: 0.5rem;
-    border: 1px solid var(--blue);
+    border: 3px solid var(--blue);
     background-color: var(--white);
     color: var(--black);
     font-family: var(--font);
@@ -385,7 +419,7 @@ tbody tr:nth-child(4) {
 }
 
 #contact form textarea {
-    
+    min-height: 6rem;
 
 }
 
@@ -393,7 +427,7 @@ tbody tr:nth-child(4) {
 #contact form button {
     display: block;
     width: 100%;
-    margin-top: 0.75rem;
+    margin-top: 2rem;
     padding: 0.75rem 1rem;
     background-color: var(--blue);
     color: var(--white);
@@ -414,28 +448,15 @@ tbody tr:nth-child(4) {
 footer {
     background-color: var(--black);
     color: var(--white);
-    padding: 0.5rem 0 1rem 0;
-    display: grid;
-    justify-content: center;
+    padding: 1.5rem 0;
     text-align: center;
     margin: 0 auto;
-}
-
-
-footer small {
-    display: block;
-    font-size: 0.75rem;
-    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    line-height: 1.25rem;
 }
 
 footer h2 {
     display: none;
-}
-
-footer address {
-    display: block;
-    font-size: 0.75rem;
-    line-height: 1.4;
 }
 
 footer address a {
@@ -448,7 +469,12 @@ footer address a {
 footer address a:first-child {
     text-decoration: underline;
     color: var(--blue);
-    text-align: center;
+}
+
+footer address a:last-child {
+    display: block;
+    margin-top: 0.25rem;
+    margin-right: 0;
 }
 
 /* THIS ONE IS DONE FOR YOU */
