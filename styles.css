@@ -211,6 +211,9 @@ input:checked ~ ul {
     max-height: 500px;
 }
 
+
+/* I left this in from the lecture example because I liked it */
+
 /* input:checked ~ label span {
     background: transparent;
 }
