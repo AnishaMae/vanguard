@@ -252,7 +252,7 @@ input:checked ~ label span:after {
 #about .container {
     display: grid;
     place-items: center;
-    gap: 1.25rem;          /* more breathing room between h2, p, and button */
+    gap: 1.25rem;
     position: relative;
     backdrop-filter: blur(4px);
     padding: 0.75rem 0;
