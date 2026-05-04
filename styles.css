@@ -107,14 +107,26 @@ header h1 {
 }
 
 /* ADD FLOATING SVG LOGO BEFORE THE H1 */
-header h1:before {
+@keyframes logoFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+header h1::before {
     content: "";
     position: absolute;
-    left:-.5rem;
+    left: -0.5rem;
     width: 3.75rem;
     height: 3.75rem;
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
-
+    animation: logoFloat 3.5s ease-in-out infinite;
 }
 
 /* NAVIGATION STYLES */
@@ -257,13 +269,13 @@ input:checked ~ label span:after {
     padding: 1rem;
     width: 50%;
     border-radius: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.5s ease, scale 0.4s ease;
 }
 
 #about a:hover,
 #about a:focus {
     background-color: var(--red);
-    transform: translateY(-1px);
+    scale: 1.05;
 }
 
 #services {
@@ -304,10 +316,15 @@ input:checked ~ label span:after {
     color: var(--white);
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: 0.5rem;
+    margin-bottom: 0.95rem;
     padding: 1.5rem 0.75rem;
     border-radius: 10px;
-    
+    transition: transform 0.25s ease;
+}
+
+#offers section:hover,
+#offers section:focus {
+    transform: translateY(-8px);
 }
 
 #table-bar-chart {
@@ -435,14 +452,14 @@ tbody tr:nth-child(4) {
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.4s ease, scale 0.8s ease;
 }
 
 
 #contact form button:hover,
 #contact form button:focus {
     background-color: var(--red);
-    transform: translateY(-1px);
+    scale: 1.05;
 }
 
 footer {
@@ -523,44 +540,157 @@ footer address a:last-child {
     animation: stepUp 1s ease-in-out forwards;
 }
 
+/* Animations and transitions */
+
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2, h3, #about a, #contact form button {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: floatIn 0.8s ease-out forwards;
+}
+
 
 /* MEDIA QUERIES (MEDIUM) */ 
 @media screen and (min-width: 800px) {
 
+    body {
+        min-width: 800px;
+        font-size: medium;
+    }
+
+
+    h1 {
+       top: -0.95rem;
+       padding-right: 1.5rem;
+    }
+
+
     nav ul {
-        overflow:visible;
-        position:absolute;
-        top: 1.5rem;
-        left:.5rem;
+        overflow: visible;
+        position: absolute;
+        top: 1.45rem;
+        left: 0.05rem;
         display: grid;
-        grid-template-columns:1fr 1fr 1fr;
+        grid-template-columns: 12% 15% 15%;
+        justify-content: flex-end;
+        gap: 1rem;
+        
     }
 
     nav li a {
-        display:inline-block;
+        font-size: 1.25rem;
+        display: inline-block;
     }
 
+
     label span, input {
-        display:none;
+        display: none;
+    }
+
+    #services{
+        margin: 1rem 2rem;
+    }
+
+    #offers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    #offers section {
+        margin-bottom: 0.25rem;
     }
 
     #results {
+        display: grid;
         grid-template-columns: 1fr 1fr;
+        justify-self: center;
+        gap: 1rem;
+
     }
     .results-container {
         flex-direction: row;
         justify-content: space-between;
     }
+
+
     .results-table {
-        width: 50%;
+        width: 100%;
     }
+
     .bar-chart {
-        width: 50%;
+        width: 100%;
     }
 
 }
 
 
-
-
 /* MEDIA QUERIES (LARGE) */
+@media screen and (min-width: 1024px) {
+
+    body {
+        min-width: 1024px;
+        font-size: medium;
+    }
+
+    #offers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    #offers section {
+        margin-bottom: 0.25rem;
+    }
+
+    #results {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-self: center;
+        gap: 1rem;
+        width: 100%
+    }
+
+    #bar-chart {
+        max-width: 1024px;
+    }
+
+    #contact form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1.5rem;
+        row-gap: 0.05rem;
+        align-items: start;
+    }
+
+    #contact form p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .one {
+        grid-column: 1
+    }
+
+    .two {
+        grid-column: 2;
+    }
+
+
+
+
+
+
+}
